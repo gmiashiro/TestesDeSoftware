@@ -48,5 +48,45 @@ class BoletimTest {
         assertEquals(5,resultado);
 
     }
-    // TODO: escrever os próximos testes durante a aula.
+    @Test
+    void deveAprovarAlunoComMediaSete() {
+        Boletim boletim = new Boletim();
+        String resultado = boletim.verificarSituacao(7);
+        assertEquals("APROVADO", resultado);
+    }
+
+    @Test
+    void deveRecuperarAlunoComMediaQuatroPontoNove() {
+        Boletim boletim = new Boletim();
+        String resultado = boletim.verificarSituacao(4.9);
+        assertEquals("RECUPERACAO", resultado);
+    }
+
+    @Test
+    void deveCalcularMediaComDecimal() {
+        Boletim boletim = new Boletim();
+        double resultado = boletim.calcularMedia(5.5, 6.0);
+        assertEquals(5.75, resultado, 0.0001);
+    }
+
+    @Test
+    void contarAprovadosArrayVazio() {
+        Boletim boletim = new Boletim();
+        int resultado = boletim.contarAprovados(new double[] {});
+        assertEquals(0, resultado);
+    }
+
+    @Test
+    void contarAprovadosArrayUmElementoAprovado() {
+        Boletim boletim = new Boletim();
+        int resultado = boletim.contarAprovados(new double[] {8.0});
+        assertEquals(1, resultado);
+    }
+
+    @Test
+    void contarAprovadosArrayVariosElementos() {
+        Boletim boletim = new Boletim();
+        int resultado = boletim.contarAprovados(new double[] {7.0, 4.0, 9.5, 2.0, 8.0});
+        assertEquals(3, resultado);
+    }
 }
